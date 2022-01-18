@@ -1,0 +1,7 @@
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
+save_pic_from_clipboard.py
+save-pic-settings.json
