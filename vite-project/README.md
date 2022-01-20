@@ -72,7 +72,6 @@ export default {
 <div style="text-align: center;">
     <img src=".github/example-props.png" alt="" width="45%">
 </div>
-
 <!-- ![example-props.png](.github/example-props.png) -->
 
 是否是必填项：`required: true`
@@ -81,7 +80,13 @@ export default {
 
 ## 自定义事件
 
-### 生命自定义事件
+### 声明自定义事件
+
+`v-on`绑定自定义事件
+
+`emits`声明
+
+`$emit()`绑定
 
 ### 触发自定义事件
 
@@ -99,3 +104,14 @@ methods: {
 ### 监听自定义事件
 
 `@change="getCount"`
+
+## v-model
+
+**应用场景**：实现组件内外数据同步
+
+`v-moel:props名称`
+
+`emits`声明
+
+`$emit('update:props名称')`
+
