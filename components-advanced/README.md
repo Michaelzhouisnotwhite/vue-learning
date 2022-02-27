@@ -16,6 +16,15 @@
       - [响应式数据](#响应式数据)
     - [4 vuex](#4-vuex)
   - [全局配置axios](#全局配置axios)
+  - [拿到dom对象](#拿到dom对象)
+  - [动态渲染组件](#动态渲染组件)
+  - [插槽](#插槽)
+    - [后备内容](#后备内容)
+    - [具名插槽](#具名插槽)
+    - [作用域插槽](#作用域插槽)
+  - [自定义指令](#自定义指令)
+    - [私有自定义指令](#私有自定义指令)
+    - [全局自定义指令](#全局自定义指令)
 
 ## 1 watch
 
@@ -132,3 +141,85 @@ export default {
 ## 全局配置axios
 
 main.js：`app.config.globalPropwerties`
+
+## 拿到dom对象
+
+注册`ref`
+
+如果组件还未生成那么需要用到
+
+```js
+this.nextTick(()=>{
+  this.$ref.name.foces()
+})
+```
+
+## 动态渲染组件
+
+```js
+<keep-alive>
+  <component :is="comName"></component>
+</keep-alive>
+
+```
+
+## 插槽
+
+Slot 
+
+### 后备内容
+
+如果用户没有指定插槽内的内容，那么就会启用后备内容
+
+```js
+<slot>这里放后备内容</slot>
+```
+
+### 具名插槽
+
+如果有多个插槽，那么就为每个插槽提供具体的名称来区分
+
+```js
+<slot name="name1">这里放后备内容</slot>
+```
+
+**使用方式：**
+
+```js
+<my-artical>
+  <template v-slot:name1> <!--可以简写成#name1 -->
+    <h1>name1插槽中的内容</h1>
+  </template>
+</my-artical>
+```
+
+### 作用域插槽
+
+包裹的东西可以绑定Props
+
+## 自定义指令
+
+### 私有自定义指令
+
+### 全局自定义指令
+
+```js
+// 生命全局自定义属性
+app.directive('focus', {
+    mounted(el) {
+        el.focus()
+    },
+    updated(el) {
+        el.focus()
+    }
+})
+```
+
+如果updated和mounted函数内容一样，就可以简写：
+
+```js
+app.directive('focus', (el)=>{
+    el.focus()
+})
+```
+
